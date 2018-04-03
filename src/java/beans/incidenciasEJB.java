@@ -24,12 +24,14 @@ public class incidenciasEJB {
     public void altaEmpleado(Empleado e) throws MisExcepciones {
         EntityManager em = emf.createEntityManager();
         // Comprobamos si ya existe un cocinero 
-        Empleado aux = em.find(Empleados.class, e.getNombre());
+        Empleado aux = em.find(Empleado.class, e.getNombreusuario());
         if (aux != null) {
             em.close();
-            throw new MisExcepciones("Ya existe un cocinero con ese nombre");
+            throw new MisExcepciones("Ya existe un empleado con ese nombre");
         }
         em.persist(e);
         em.close();
     }
+    
+    
 }
