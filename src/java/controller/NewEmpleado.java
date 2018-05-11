@@ -35,14 +35,14 @@ public class NewEmpleado extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Recogemos las variables del formulario 
-        String nomusuario = request.getParameter("nomusuario");
-        String nomcompleto = request.getParameter("nomcompleto");
+        String nombreUsuario = request.getParameter("nombreUsuario");
         String password = request.getParameter("password");
+        String nombreCompleto = request.getParameter("nombreCompleto");
         String telefono = request.getParameter("telefono");
         String ciudad = request.getParameter("ciudad");
         
         // Creamos el cocinero con los datos del formulario
-        Empleado e = new Empleado(nomusuario, nomcompleto, password, telefono, ciudad);
+        Empleado e = new Empleado(nombreUsuario, password, nombreCompleto, telefono, ciudad);
         try {
             incidencias.altaEmpleado(e);
             // Si el alta ha ido bien devolvemos msg ok

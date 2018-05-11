@@ -9,6 +9,7 @@ package exceptions;
  *
  * @author DAM
  */
+
 public class MisExcepciones extends Exception {
     
     public MisExcepciones(String message){

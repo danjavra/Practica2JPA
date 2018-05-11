@@ -22,6 +22,10 @@
         <h1><%= status %></h1>
         <%
             }
+
         %>
+        <form action="index.html">
+            <input type="submit" value="Back">
+        </form>
     </body>
 </html>

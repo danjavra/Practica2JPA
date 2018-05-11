@@ -55,12 +55,19 @@ public class Historial implements Serializable {
     @ManyToOne(optional = false)
     private Empleado empleado;
 
-    public Historial() {
+     public Historial() {
     }
 
     public Historial(Integer idevento) {
         this.idevento = idevento;
     }
+
+    public Historial(String tipo, String fechahora, Empleado empleado) {
+        this.tipo = tipo;
+        this.fechahora = fechahora;
+        this.empleado = empleado;
+    }
+    
 
     public Historial(Integer idevento, String tipo, String fechahora) {
         this.idevento = idevento;

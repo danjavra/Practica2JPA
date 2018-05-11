@@ -71,7 +71,7 @@ public class Empleado implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "destino")
     private Collection<Incidencia> incidenciaCollection1;
 
-    public Empleado() {
+   public Empleado() {
     }
 
     public Empleado(String nombreusuario) {
@@ -175,7 +175,7 @@ public class Empleado implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Empleado[ nombreusuario=" + nombreusuario + " ]";
+        return   nombreusuario ;
     }
     
 }

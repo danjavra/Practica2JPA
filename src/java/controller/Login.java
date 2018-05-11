@@ -6,6 +6,10 @@
 package controller;
 
 import beans.incidenciasEJB;
+import entities.Empleado;
+import entities.Historial;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -34,12 +38,21 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         String nomusuario = request.getParameter("user");
         String password = request.getParameter("pass");
-        // Verificamos si los datos son correctos con la bbdd
+        ZonedDateTime d =  ZonedDateTime.now();
+        String date = d.toString();
+        Empleado e = incidencias.getEmpleadoByUser(nomusuario);
+        Historial h = new Historial("I", date, e);
+       if(incidencias.empleadoVerificado(nomusuario,password).isEmpty()){
+         request.setAttribute("errorStatus", "Login Failed");
+       }else {
+        request.getSession(true).setAttribute("user", e);
         
-        // Si lo son guardamos el user en variable de sesion
-        request.getSession(true).setAttribute("user", nomusuario);
-        response.sendRedirect(request.getContextPath() + "/userValidado.jsp");
-        
+           } if (nomusuario.equalsIgnoreCase("admin") && password.equalsIgnoreCase("admin")){
+             response.sendRedirect(request.getContextPath() + "/adminValidado.jsp");   
+           }else{
+               response.sendRedirect(request.getContextPath() + "/userValidado.jsp");
+           }
+    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

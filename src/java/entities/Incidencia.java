@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author DAM
  */
+
 @Entity
 @Table(name = "incidencia")
 @XmlRootElement
@@ -63,12 +64,24 @@ public class Incidencia implements Serializable {
     @ManyToOne(optional = false)
     private Empleado destino;
 
+ 
     public Incidencia() {
     }
 
     public Incidencia(Integer idincidencia) {
         this.idincidencia = idincidencia;
     }
+
+    public Incidencia(Integer idincidencia, String fechahora, String detalle, String tipo, Empleado origen, Empleado destino) {
+        this.idincidencia = idincidencia;
+        this.fechahora = fechahora;
+        this.detalle = detalle;
+        this.tipo = tipo;
+        this.origen = origen;
+        this.destino = destino;
+    }
+    
+    
 
     public Incidencia(Integer idincidencia, String fechahora, String detalle, String tipo) {
         this.idincidencia = idincidencia;
